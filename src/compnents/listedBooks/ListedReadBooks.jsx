@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { BookContexts } from '../../context/BookContext';
 import BookCard from '../ui/BookCard';
 
@@ -8,34 +8,34 @@ const ListedReadBooks = ({ sortingType }) => {
     // const [filteredReadList, setFilteredReadList] = useState([]);
     // console.log(filteredReadList, setFilteredReadList);
 
-    // let filteredData = [...storedBooks];
-    // console.log(filteredData);
+    let filteredData = [...storedBooks];
+    console.log(filteredData);
 
-    // if (sortingType === "totalPages") {
-    //     filteredData.sort((a, b) => a.totalPages - b.totalPages);
-    // } else if (sortingType === "rating") {
-    //     filteredData.sort((a, b) => b.rating - a.rating);
-    // }
+    if (sortingType === "totalPages") {
+        filteredData.sort((a, b) => a.totalPages - b.totalPages);
+    } else if (sortingType === "rating") {
+        filteredData.sort((a, b) => b.rating - a.rating);
+    }
 
-    const [filteredReadList, setFilteredReadList] = useState(storedBooks);
+    // const [filteredReadList, setFilteredReadList] = useState(storedBooks);
 
-    console.log(filteredReadList, "filteredReadList");
+    // console.log(filteredReadList, "filteredReadList");
 
-    useEffect(() => {
-        if (sortingType) {
-            if (sortingType === "totalPages") {
-                const sortedData = [...storedBooks].sort(
-                    (a, b) => a.totalPages - b.totalPages,
-                );
-                console.log(sortedData);
-                setFilteredReadList(sortedData);
-            } else if (sortingType === "rating") {
-                const sortedData = [...storedBooks].sort((a, b) => a.rating - b.rating);
-                console.log(sortedData);
-                setFilteredReadList(sortedData);
-            }
-        }
-    }, [sortingType, storedBooks]);
+    // useEffect(() => {
+    //     if (sortingType) {
+    //         if (sortingType === "totalPages") {
+    //             const sortedData = [...storedBooks].sort(
+    //                 (a, b) => a.totalPages - b.totalPages,
+    //             );
+    //             console.log(sortedData);
+    //             setFilteredReadList(sortedData);
+    //         } else if (sortingType === "rating") {
+    //             const sortedData = [...storedBooks].sort((a, b) => a.rating - b.rating);
+    //             console.log(sortedData);
+    //             setFilteredReadList(sortedData);
+    //         }
+    //     }
+    // }, [sortingType, storedBooks]);
 
 
     if (storedBooks.length === 0) {

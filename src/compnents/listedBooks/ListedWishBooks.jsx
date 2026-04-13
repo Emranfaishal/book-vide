@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BookContexts } from '../../context/BookContext';
 import BookCard from '../ui/BookCard';
 
@@ -9,30 +9,30 @@ const ListedWishBooks = ({ sortingType }) => {
     console.log(sortedList, setSortedList);
 
 
-    const [filteredWishList, setFilteredWishList] = useState(wishList);
+    // const [filteredWishList, setFilteredWishList] = useState(wishList);
 
-    useEffect(() => {
-        if (sortingType) {
-            if (sortingType === "totalPages") {
-                const sortedData = [...wishList].sort(
-                    (a, b) => a.totalPages - b.totalPages,
-                );
-                console.log(sortedData);
-                setFilteredWishList(sortedData);
-            } else if (sortingType === "rating") {
-                const sortedData = [...wishList].sort((a, b) => a.rating - b.rating);
-                console.log(sortedData);
-                setFilteredWishList(sortedData);
-            }
-        }
-    }, [sortingType, wishList]);
-    // let filteredDatas = [...wishList];
+    // useEffect(() => {
+    //     if (sortingType) {
+    //         if (sortingType === "totalPages") {
+    //             const sortedData = [...wishList].sort(
+    //                 (a, b) => a.totalPages - b.totalPages,
+    //             );
+    //             console.log(sortedData);
+    //             setFilteredWishList(sortedData);
+    //         } else if (sortingType === "rating") {
+    //             const sortedData = [...wishList].sort((a, b) => a.rating - b.rating);
+    //             console.log(sortedData);
+    //             setFilteredWishList(sortedData);
+    //         }
+    //     }
+    // }, [sortingType, wishList]);
+    let filteredDatas = [...wishList];
 
-    // if (sortingType === "totalPages") {
-    //     filteredDatas.sort((a, b) => a.totalPages - b.totalPages);
-    // } else if (sortingType === "rating") {
-    //     filteredDatas.sort((a, b) => b.rating - a.rating);
-    // }
+    if (sortingType === "totalPages") {
+        filteredDatas.sort((a, b) => a.totalPages - b.totalPages);
+    } else if (sortingType === "rating") {
+        filteredDatas.sort((a, b) => b.rating - a.rating);
+    }
 
     // useEffect(() => {
     //     let sortedData = wishList;
